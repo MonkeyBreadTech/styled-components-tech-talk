@@ -1,42 +1,20 @@
 import React from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import logo from 'logo.svg';
-import 'App.css';
-import { Counter } from 'features/counter/Counter';
+import MuiPokemon from 'modules/pokemon/mui';
+import { Pokemon } from 'modules/pokemon/pokemon.container';
+import { ROUTES } from 'utilities/routes';
+import { StyledPokemon } from 'modules/pokemon/styled';
 
-function App() {
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit&nbsp;
-          <code>src/App.js</code>
-          &nbsp; and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a className="App-link" href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
-            React
-          </a>
-          <span>, </span>
-          <a className="App-link" href="https://redux.js.org/" target="_blank" rel="noopener noreferrer">
-            Redux
-          </a>
-          <span>, </span>
-          <a className="App-link" href="https://redux-toolkit.js.org/" target="_blank" rel="noopener noreferrer">
-            Redux Toolkit
-          </a>
-          ,&nbsp;
-          <span> and </span>
-          <a className="App-link" href="https://react-redux.js.org/" target="_blank" rel="noopener noreferrer">
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Routes>
+      <Route path={ROUTES.POKEMON} element={<Pokemon />}>
+        <Route index element={<MuiPokemon />} />
+        <Route path={ROUTES.STYLED} element={<StyledPokemon />} />
+        <Route path={ROUTES.MUI} element={<MuiPokemon />} />
+      </Route>
+      <Route path="*" element={<Navigate to={ROUTES.POKEMON} />} />
+    </Routes>
   );
 }
-
-export default App;
