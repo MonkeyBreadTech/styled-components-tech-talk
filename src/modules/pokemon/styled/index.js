@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import PokemonCard from 'modules/pokemon/styled/components/pokemonCard/pokemonCard.component';
 import Toggle from 'modules/pokemon/styled/components/toggle/toggle.component';
-import { ContentWrapper, PageContainer } from 'modules/pokemon/styled/styles';
+import { ContentWrapper, PageContainer, StyledLink } from 'modules/pokemon/styled/styles';
 import { NavBar } from 'modules/pokemon/styled/components/navBar.component';
+import { ROUTES } from 'utilities/routes';
 import { blueTheme, redTheme } from 'utilities/styledThemes';
 import { selectTheme } from 'modules/layout/layout.selectors';
 import { toggleTheme } from 'modules/layout/layout.slice';
@@ -20,8 +21,9 @@ export function StyledPokemon() {
 
   return (
     <ThemeProvider theme={theme === 'red' ? redTheme : blueTheme}>
-      <PageContainer shouldShowProp>
+      <PageContainer>
         <NavBar>
+          <StyledLink to={`/${ROUTES.POKEMON}/${ROUTES.MUI}`}>MUI</StyledLink>
           <Toggle onClick={() => dispatch(toggleTheme())} />
         </NavBar>
         <ContentWrapper>

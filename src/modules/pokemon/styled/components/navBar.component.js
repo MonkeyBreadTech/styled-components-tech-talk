@@ -5,8 +5,9 @@ export const NavBar = styled.nav`
 
   align-items: center;
   box-shadow: 0px 15px 10px -15px #111;
+  color: white;
   display: flex;
   height: 64px;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 16px;
 `;
